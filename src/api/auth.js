@@ -1,4 +1,4 @@
-import request from '../helpers/request'
+import request from '../helpers/request.js'
 // 通过auth.login() 来发送http请求
 const URL = {
   REGISTER: '/auth/register',
@@ -11,8 +11,8 @@ export default {
   register({username,password}){
     return request( URL.REGISTER, 'POST', {username, password})
   },
-  login(username, password){
-    return request( URL.LOGIN, 'POST', { username, password})
+  login({username, password}){
+    return request( URL.LOGIN, 'POST', {username, password})
   },
   logout(){
     return request( URL.LOGOUT)

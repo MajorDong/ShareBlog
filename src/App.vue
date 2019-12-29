@@ -1,32 +1,55 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="header">
+      <bheader></bheader>
     </div>
-    <router-view/>
+    <main id="main">
+      <router-view/>
+    </main>
+    <div id="footer">
+      <bfooter></bfooter>
+    </div>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Bheader from './components/bheader'
+import Bfooter from './components/bfooter'
 
-#nav {
-  padding: 30px;
+export default {
+  components: {
+    'bheader': Bheader,
+    'bfooter': Bfooter
+  }
 }
+</script>
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style lang="scss">
+ *{
+   padding: 0;
+   margin: 0;
+ }
+ body {
+   font: 14px/1.6 Arial,"Microsoft YaHei","黑体","宋体",sans-serif;
+ }
+ html, body, #app {
+   height: 100%;
+ }
+ #app {
+   display:grid;
+   grid-template-rows: auto 1fr auto;
+   grid-template-columns: 12% auto 12%;
+   grid-template-areas: "header header header"
+                        ".      main   .     "
+                        "footer footer footer";
+   >#header{
+     grid-area: header;
+   }
+   >#main{
+     grid-area: main;
+   }
+   >#footer {
+     grid-area: footer;
+   }
+ }
 </style>
