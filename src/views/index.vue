@@ -8,7 +8,9 @@
 
 <script>
 import request from '../helpers/request.js'
+import auth from '../api/auth'
 window.request = request
+window.auth = auth
 
 export default {
   name: "index",
