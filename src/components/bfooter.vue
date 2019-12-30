@@ -22,7 +22,7 @@ export default {
     > span {
       font: 14px/1.6 Arial, "Microsoft YaHei", "黑体", "宋体", sans-serif;
       font-size: 17px;
-      padding: 5px;
+      padding: 3px;
     }
   }
 </style>
