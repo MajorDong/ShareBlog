@@ -64,7 +64,7 @@ export default {
   }
   .header1 > .banner {
     font: 14px/1.6 Arial, "Microsoft YaHei", "黑体", "宋体", sans-serif;
-    height: 520px;
+    height: 470px;
     width: 100%;
     background-image: url(../assets/img/bheader.jpg);
     background-position: center center;
