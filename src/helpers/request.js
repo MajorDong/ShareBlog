@@ -2,7 +2,7 @@ import axios from 'axios'
 //请求失败弹出
 import { Message } from 'element-ui'
 
-axios.defaults.baseURL = 'https://blog-server.hunger-valley.com'
+axios.defaults.baseURL = 'http://blog-server.hunger-valley.com'
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
 //对于跨域的请求也带上cookie
 axios.defaults.withCredentials = true;

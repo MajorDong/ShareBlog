@@ -20,7 +20,7 @@ export default {
   components: {
     'bheader': Bheader,
     'bfooter': Bfooter
-  }
+  },
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="bheader">
-    <div class="header1" v-if="!isIndex">
+    <div class="header1" v-if="!isLogin">
       <div class="banner">
         <div class="logo">
           <span>BlogTalk</span>
@@ -18,22 +18,44 @@
     </div>
     <div class="header2" v-else>
       <h1>BlOGTALK</h1>
-      <i class="edit el-icon-edit"></i>
-      <img class="avatar" src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt />
+
+      <div>
+        <i class="edit el-icon-edit"></i>
+      </div>
+      <div class="user">
+        <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.name" />
+        <ul>
+          <li>
+            <router-link to="/my">我的</router-link>
+          </li>
+          <li>
+            <a href="#" @click="onLogout">注销</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "bheader",
-  data(){
-    return{
-      isIndex:false,
-    }
+  data() {
+    return {};
   },
-  watch:{
-    
+  computed: {
+    ...mapGetters(['user', 'isLogin'])
+  },
+  created() {
+    this.checkLogin().then;
+  },
+  methods: {
+    ...mapActions(['checkLogin', 'logout']),
+    onLogout(){
+      this.logout()
+    }
   }
 };
 </script>
@@ -49,17 +71,48 @@ export default {
       padding: 7px 7px;
       color: #ffffff;
     }
-    > .edit {
+    .edit {
       color: #fff;
       font-size: 30px;
+      padding-right: 25px;
     }
-    > img {
+    img {
       width: 40px;
       height: 40px;
       border: 1px solid #fff;
       border-radius: 50%;
-      margin-left: 15px;
-      margin-right: 7px;
+    }
+    .user {
+      position: relative;
+      right: 10px;
+      padding: 3px;
+      ul {
+        display: none;
+        position: absolute;
+        right: 0;
+        list-style: none;
+        border: 1px solid #eaeaea;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+
+        a {
+          text-decoration: none;
+          color: #333;
+          font-size: 12px;
+          display: block;
+          padding: 5px 10px;
+
+          &:hover {
+            background-color: #eaeaea;
+            color: #61baf1;
+          }
+        }
+      }
+
+      &:hover ul {
+        display: block;
+      }
     }
   }
   .header1 > .banner {
@@ -97,7 +150,7 @@ export default {
 
       > h1 {
         font-size: 60px;
-        ont-family: "Libre Baskerville", serif;
+        font-family: "Libre Baskerville", serif;
       }
       > .line {
         width: 64px;
