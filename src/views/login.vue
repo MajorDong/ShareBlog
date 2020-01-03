@@ -31,7 +31,7 @@ export default {
     onLogin(){
       this.login({username: this.username, password: this.password})
         .then(()=>{
-          this.$router.push({path: '/'})
+          this.$router.push({path: this.$route.query.redirect || '/'})
         })
     }
   }
@@ -61,7 +61,7 @@ export default {
       margin-top: 70px;
       width: 370px;
       background: #ffffff;
-      box-shadow: 5px 5px 3px rgba(0,0,0,0.5);
+      box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
       border: 2px solid #415268;
       display: flex;
       flex-direction: column;

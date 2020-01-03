@@ -1,7 +1,7 @@
 <template>
   <div>
     <footer class="footer">
-        <span>Copyright © 2019 Jerry Shen.该网站开源</span>
+        <span>Copyright © 2019 Jerry Shen.</span>
     </footer>
   </div>
 </template>

@@ -8,6 +8,7 @@ import User from '../views/user'
 import My from '../views/my'
 import Login from '../views/login'
 import Register from '../views/register'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -18,30 +19,6 @@ const routes = [
     component: Index
   },
   {
-    path: '/detail',
-    name: 'detail',
-    component: Detail
-  },
-  {
-    path: '/create',
-    name: 'cerate',
-    component: Create
-  },
-  {
-    path: '/edit',
-    name: 'edit',
-    component: Edit
-  },
-  {
-    path: '/user',
-    name: 'user',
-    component: User
-  },
-  {
-    path: '/my',
-    name: 'my',
-    component: My
-  },{
     path: '/register',
     name: 'register',
     component: Register
@@ -50,11 +27,59 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
-  }
+  },
+  {
+    path: '/detail:blogId',
+    name: 'detail',
+    component: Detail
+  },
+  {
+    path: '/create',
+    name: 'cerate',
+    component: Create,
+    meta: { requiresAuth: true}
+  },
+  {
+    path: '/edit/:blogId',
+    name: 'edit',
+    component: Edit,
+    meta: { requiresAuth: true}
+  },
+  {
+    path: '/user:userId',
+    name: 'user',
+    component: User
+  },
+  {
+    path: '/my',
+    name: 'my',
+    component: My,
+    meta: { requiresAuth: true}
+  },
+  
 ]
+
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    store.dispatch('checkLogin').then((isLogin) =>{
+      if (!isLogin) {
+        next({
+          path: '/login',
+          query: { redirect: to.fullPath }
+        })
+      } else {
+        next()
+      }
+    })
+    
+  } else {
+    next() // 确保一定要调用 next()
+  }
 })
 
 export default router
