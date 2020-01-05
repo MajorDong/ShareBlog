@@ -23,11 +23,11 @@
       </div>
     </div>
     <div class="header2" v-else>
-      <h1>BlOGTALK</h1>
+      <h1><router-link to="/">BlOGTALK</router-link></h1>
       
 
       <div>
-        <i class="edit el-icon-edit"></i>
+        <router-link to="/create"><i class="edit el-icon-plus"></i></router-link>
       </div>
       <div class="user">
         <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.name" />
@@ -77,6 +77,10 @@ export default {
       flex-grow: 1;
       padding: 7px 7px;
       color: #ffffff;
+      > a{
+        text-decoration: none;
+        color: #ffffff;
+      }
     }
     .edit {
       color: #fff;
