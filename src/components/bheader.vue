@@ -73,6 +73,10 @@ export default {
     display: flex;
     align-items: center;
     background: #0a1d30;
+    a {
+      text-decoration: none;
+      color: #ffffff;
+    }
     > h1 {
       flex-grow: 1;
       padding: 7px 7px;

@@ -84,6 +84,7 @@ export default {
       justify-self: center;
       text-align: center;
       margin-left: 0;
+      margin-right: 20px;
       margin-top: 5px;
       img {
         width: 60px;
