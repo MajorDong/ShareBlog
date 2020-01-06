@@ -62,6 +62,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
   }
   a {
     text-decoration: none;
