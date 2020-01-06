@@ -29,7 +29,7 @@ const routes = [
     component: Login
   },
   {
-    path: '/detail:blogId',
+    path: '/detail/:blogId',
     name: 'detail',
     component: Detail
   },
@@ -46,12 +46,12 @@ const routes = [
     meta: { requiresAuth: true}
   },
   {
-    path: '/user:userId',
+    path: '/user/:userId',
     name: 'user',
     component: User
   },
   {
-    path: '/my',
+    path: '/my/',
     name: 'my',
     component: My,
     meta: { requiresAuth: true}

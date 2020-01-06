@@ -9,7 +9,7 @@
           </figure>
           <h3>
             {{blog.title}}
-            <span>{{blog.createdAt}}</span>
+            <span>{{blog.createdAt | formatDate}}</span>
           </h3>
           <p>{{blog.description}}</p>
         </div>
