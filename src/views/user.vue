@@ -12,11 +12,11 @@
             <span class="year">{{splitDate(blog.createdAt).year}}</span>
           </div>
           <h3>{{blog.title}}</h3>
-          <p>{{blog.descript}}</p>
+          <p>{{blog.description}}</p>
       </router-link>
     </section>
     <section class="pagination">
-      <el-pagination @current-change="onPageChange" background layout="prev, pager, next" :total="total"></el-pagination>
+      <el-pagination @current-change="onPageChange" background layout="prev, pager, next" :total="total" :current-page="page"></el-pagination>
     </section>
   </div>
 </template>

@@ -16,7 +16,13 @@
       </router-link>
     </section>
     <section class="pagination">
-      <el-pagination @current-change="onPageChange" background layout="prev, pager, next" :total="total"></el-pagination>
+      <el-pagination
+        @current-change="onPageChange"
+        background
+        layout="prev, pager, next"
+        :total="total"
+        :current-page="page"
+      ></el-pagination>
     </section>
   </div>
 </template>
@@ -31,26 +37,25 @@ export default {
     return {
       blogs: [],
       total: 0,
-      page: 1,
-
+      page: 1
     };
   },
   created() {
-    this.page = parseInt(this.$route.query.page) || 1
-    blog.getIndexBlogs({page: this.page}).then(res => {
+    this.page = parseInt(this.$route.query.page) || 1;
+    blog.getIndexBlogs({ page: this.page }).then(res => {
       this.blogs = res.data;
       this.total = res.total;
-      this.page = res.page
+      this.page = res.page;
     });
   },
   methods: {
-    onPageChange(newPage){
-      blog.getIndexBlogs({ page:newPage }).then(res => {
-      this.blogs = res.data;
-      this.total = res.total;
-      this.page = res.page
-      this.$router.push({path: '/', query: {page: newPage }})
-    });
+    onPageChange(newPage) {
+      blog.getIndexBlogs({ page: newPage }).then(res => {
+        this.blogs = res.data;
+        this.total = res.total;
+        this.page = res.page;
+        this.$router.push({ path: "/", query: { page: newPage } });
+      });
     }
   }
 };
